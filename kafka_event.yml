@@ -1,1 +1,16 @@
 
+---
+
+- name: Grabbing Info from Kafka - for App
+  sources:
+   - ansible.eda.kafka:
+       host: 0.0.0.0
+       port: 9092
+       topic: EcoReports
+
+  rules:
+   - name: Application is down
+     condition: 
+     action:
+       run_playbook:
+        name: bring-her-up.yml
